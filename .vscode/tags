@@ -1,0 +1,26 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ido/Desktop/Project/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
+BCH	../bch.py	/^class BCH:$/;"	kind:class	line:3
+BLUE	../puf.py	/^BLUE=colorama.Fore.LIGHTBLUE_EX$/;"	kind:variable	line:4
+CYAN	../puf.py	/^CYAN=colorama.Fore.LIGHTCYAN_EX$/;"	kind:variable	line:7
+GREEN	../puf.py	/^GREEN=colorama.Fore.LIGHTGREEN_EX$/;"	kind:variable	line:5
+PUF	../puf.py	/^class PUF:$/;"	kind:class	line:9
+RED	../puf.py	/^RED=colorama.Fore.LIGHTRED_EX$/;"	kind:variable	line:3
+RESET	../puf.py	/^RESET=colorama.Fore.RESET$/;"	kind:variable	line:6
+__call__	../puf.py	/^    def __call__(self):$/;"	kind:member	line:30
+__init__	../bch.py	/^    def __init__(self, t = None, n = None):$/;"	kind:member	line:17
+__init__	../puf.py	/^    def __init__(self, length:int = None, err_prob:float = None, response:list = None):$/;"	kind:member	line:19
+__repr__	../puf.py	/^    def __repr__(self):$/;"	kind:member	line:36
+bch.py	../bch.py	1;"	kind:file	line:1
+puf.py	../puf.py	1;"	kind:file	line:1
+test.py	../test.py	1;"	kind:file	line:1
+test_puf	../test.py	/^def test_puf():$/;"	kind:function	line:2
