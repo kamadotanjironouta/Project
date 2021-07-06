@@ -14,12 +14,15 @@ def test_bch():
     print(encoded)
 
 def test_powerpuf():
+    n = int(input("Enter the length of the response: "))
+    err = float(input("Enter the error prob of each bit: "))
     pufs = []
-    p = PowerPuf(127, 0.1)
+    p = PowerPuf(n, err)
     print(p)
-    p.generate( tmp := PUF(127, 0.01) )
+    p.generate( tmp := PUF(n,err) )
     pufs.append(tmp)
     p.verify(res := tmp())
+    print("".join([f"{i[0]}" if i[0] == i[1] else f"{i[0]}({i[1]})" for i in zip(res, tmp.response)]))
 
 
 

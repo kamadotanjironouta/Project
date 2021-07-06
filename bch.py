@@ -26,7 +26,7 @@ class BCH:
             raise ValueError("Bad Args")
         self.t = t
         self.n = n
-        self.m = int(ceil(log2(n)))
+        self.m = int(ceil(log2(n + 1)))
         self.d = 2*t + 1
         self.gf = GF(2**self.m, 'x'); self.gf.inject_variables(verbose = False)
         self.pr = self.gf.polynomial_ring()
@@ -43,12 +43,11 @@ class BCH:
 
     def encode(self, res: list):
         encode_gf = GF(2**(self.n), 'x'); encode_gf.inject_variables(verbose = False)
-        px = encode_gf(res)*(x**self.r)
+        px = encode_gf(res)*(x**(self.n - self.k))
         return list(px.polynomial() - px.polynomial().mod(self.gp))
 
     def calculate_syndrome(self, codeword: list):
-        syndrome = [self.pr(codeword)(self.gf.gen()**i) for i in range(1, self.d)]
-        return syndrome
+        return [self.gf(self.pr(codeword)(x**i).polynomial()) for i in range(1, self.d)]
 
     def __repr__(self):
         return f'''\
