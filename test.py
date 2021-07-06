@@ -1,7 +1,8 @@
 from puf import PUF
 from bch import BCH
 from powerpuf import PowerPuf
-DIV = '-' * 212
+import os
+DIV = '-' * os.get_terminal_size().columns
 
 def test_puf():
     p = PUF(10)
@@ -9,9 +10,10 @@ def test_puf():
     print(p())
 
 def test_bch():
-    code = BCH(2, 16)
-    encoded = code.encode([1, 1, 0, 1, 0, 0, 1])
-    print(encoded)
+    code = BCH(3, 15)
+    encoded = code.encode([1, 1, 0, 1, 1])
+    print(encoded, [1, 1, 0, 1, 1])
+    print(code.decode(encoded), [1, 1, 0, 1, 1])
 
 def test_powerpuf():
     n = int(input("Enter the length of the response: "))
@@ -27,8 +29,8 @@ def test_powerpuf():
 
 
 if __name__ == "__main__":
-    #test_puf()
-    #print(DIV)
-    #test_bch()
+    # test_puf()
     print(DIV)
-    test_powerpuf()
+    test_bch()
+    # print(DIV)
+    # test_powerpuf()

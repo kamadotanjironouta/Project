@@ -54,13 +54,14 @@ class PowerPuf(PUF):
                 try:
                     syn_mat =  Matrix(self.code.gf, [list(map(lambda x: x.polynomial(), syndromes[i:self.code.t + i])) for i in range(self.code.t - j)])
                     print(syn_mat,-Matrix(self.code.gf, syndromes[self.code.t-j:len(syndromes) - j:]).transpose(), sep = '\n')
+                    print('---')
                     error_poly = syn_mat.inverse()*(-Matrix(self.code.gf, syndromes[self.code.t-j:len(syndromes) - j:]).transpose())
                     print(error_poly)
                     print(f"{GREEN}Error Locator Matrix: {BCYAN}")
                     err_mat = Matrix(self.code.gf, [(vector(i[0])) for i in error_poly])
                     print(err_mat)
-                    print(vector([self.code.gf.gen()**(err_mat.dimensions()[1]- 1 - i) for i in range(err_mat.dimensions()[1])]))
-                    print(errors := err_mat * vector([self.code.gf.gen()**(err_mat.dimensions()[1]- 1 - i) for i in range(err_mat.dimensions()[1])]))
+                    print(vector([self.code.gf.gen()**(i) for i in range(err_mat.dimensions()[1])]))
+                    print(errors := err_mat * vector([self.code.gf.gen()**(i) for i in range(err_mat.dimensions()[1])]))
                     print([self.code.n - i.log(self.code.gf.gen()) for i in errors])
                     break
                 except Exception as e:

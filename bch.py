@@ -44,10 +44,38 @@ class BCH:
     def encode(self, res: list):
         encode_gf = GF(2**(self.n), 'x'); encode_gf.inject_variables(verbose = False)
         px = encode_gf(res)*(x**(self.n - self.k))
-        return list(px.polynomial() - px.polynomial().mod(self.gp))
+        temp = list(px.polynomial() - px.polynomial().mod(self.gp))
+        return ((2**self.m - 1)-(len(temp))) * [0] + temp
 
-    def calculate_syndrome(self, codeword: list):
-        return [self.gf(self.pr(codeword)(x**i).polynomial()) for i in range(1, self.d)]
+    def calculate_syndromes(self, codeword: list):
+        return [self.pr(self.pr(codeword))(self.gf.gen()**i) for i in range(1, self.d)]
+
+    def decode(self, codeword: list):
+        codeword[5] = int(codeword[5]) ^ 1
+        codeword[13] = int(codeword[13]) ^ 1
+        syndromes = self.calculate_syndromes(codeword)
+        syndrome_matrix = Matrix([line for line in [syndromes[i:self.t + i] for i in range(self.t)]])
+        print(syndrome_matrix)
+        m = None
+        for i in range(self.t):
+            try:
+                syndrome_matrix[range(0, self.t - i), range(0,self.t - i)].inverse() * vector(syndromes[self.t-i: self.d - 2 - i])
+            except Exception as _e:
+                print("Trying with a matrix of lower degree {}x{}".format(self.t-i-1, self.t-i-1))
+            else:
+                m = syndrome_matrix[range(0, self.t - i), range(0,self.t - i)].inverse() * vector(syndromes[self.t-i: self.d - 2 - i])
+                break
+        if not m:
+            print("Couldn't correct")
+            return None
+        m = (list(m) + [1])[::-1]
+        m = Matrix(m)
+        print(m)
+        print((m * vector([self.gf.gen()**i for i in range(m.dimensions()[1])]))[0])
+        errors = []
+        print(errors)
+        return 0
+        
 
     def __repr__(self):
         return f'''\
