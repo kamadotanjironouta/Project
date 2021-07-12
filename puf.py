@@ -18,7 +18,7 @@ class PUF:
     '''
 
     def __init__(self, length:int = None, err_prob:float = None, response:list = None):
-        if not (length or response) or length <= 0 or (err_prob != None and not (0 <= err_prob <= 1)):
+        if (length <= 0) or (not (0 <= err_prob <= 1)):
             raise ValueError("Bad Arguements")
         if response:
             self.response = response

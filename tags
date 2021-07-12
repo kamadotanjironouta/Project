@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/ido/Desktop/Project/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210110.0/
+BCH	bch.py	/^class BCH:$/;"	c
+BCYAN	powerpuf.py	/^BCYAN = colorama.Fore.CYAN$/;"	v
+BLUE	bch.py	/^BLUE=colorama.Fore.LIGHTBLUE_EX$/;"	v
+BLUE	powerpuf.py	/^BLUE=colorama.Fore.LIGHTBLUE_EX$/;"	v
+BLUE	puf.py	/^BLUE=colorama.Fore.LIGHTBLUE_EX$/;"	v
+CYAN	bch.py	/^CYAN=colorama.Fore.LIGHTCYAN_EX$/;"	v
+CYAN	powerpuf.py	/^CYAN=colorama.Fore.LIGHTCYAN_EX$/;"	v
+CYAN	puf.py	/^CYAN=colorama.Fore.LIGHTCYAN_EX$/;"	v
+DIV	test.py	/^DIV = '-' * os.get_terminal_size().columns$/;"	v
+GREEN	bch.py	/^GREEN=colorama.Fore.LIGHTGREEN_EX$/;"	v
+GREEN	powerpuf.py	/^GREEN=colorama.Fore.LIGHTGREEN_EX$/;"	v
+GREEN	puf.py	/^GREEN=colorama.Fore.LIGHTGREEN_EX$/;"	v
+PUF	puf.py	/^class PUF:$/;"	c
+PowerPuf	powerpuf.py	/^class PowerPuf(PUF):$/;"	c
+RED	bch.py	/^RED=colorama.Fore.LIGHTRED_EX$/;"	v
+RED	powerpuf.py	/^RED=colorama.Fore.LIGHTRED_EX$/;"	v
+RED	puf.py	/^RED=colorama.Fore.LIGHTRED_EX$/;"	v
+RESET	bch.py	/^RESET=colorama.Fore.RESET$/;"	v
+RESET	powerpuf.py	/^RESET=colorama.Fore.RESET$/;"	v
+RESET	puf.py	/^RESET=colorama.Fore.RESET$/;"	v
+YELLOW	powerpuf.py	/^YELLOW=colorama.Fore.LIGHTYELLOW_EX$/;"	v
+YELLOW	puf.py	/^YELLOW=colorama.Fore.LIGHTYELLOW_EX$/;"	v
+__call__	puf.py	/^    def __call__(self):$/;"	m	class:PUF
+__init__	bch.py	/^    def __init__(self, t = None, n = None):$/;"	m	class:BCH
+__init__	powerpuf.py	/^    def __init__(self, length: int = None, err_prob: float = None, response:list = None ):$/;"	m	class:PowerPuf
+__init__	puf.py	/^    def __init__(self, length:int = None, err_prob:float = None, response:list = None):$/;"	m	class:PUF
+__repr__	bch.py	/^    def __repr__(self):$/;"	m	class:BCH
+__repr__	powerpuf.py	/^    def __repr__(self):$/;"	m	class:PowerPuf
+__repr__	puf.py	/^    def __repr__(self):$/;"	m	class:PUF
+calculate_syndromes	bch.py	/^    def calculate_syndromes(self, codeword: list):$/;"	m	class:BCH
+decode	bch.py	/^    def decode(self, codeword: list):$/;"	m	class:BCH
+encode	bch.py	/^    def encode(self, res: list):$/;"	m	class:BCH
+generate	powerpuf.py	/^    def generate(self, p: PUF):$/;"	m	class:PowerPuf
+test_bch	test.py	/^def test_bch():$/;"	f
+test_powerpuf	test.py	/^def test_powerpuf():$/;"	f
+test_puf	test.py	/^def test_puf():$/;"	f
+verify	powerpuf.py	/^    def verify(self, res: list):$/;"	m	class:PowerPuf
