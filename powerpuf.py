@@ -23,6 +23,7 @@ class PowerPuf(PUF):
             self.helperdata = []
         except Exception as e:
             raise e
+        self.generate()
 
     def generate(self):
         '''
@@ -47,7 +48,8 @@ class PowerPuf(PUF):
         self.helperdata.append(helperdata)
 
     def verify(self, res: list):
-        pass
+        print(f"{BLUE}Received Response => {''.join([BLUE + str(bit) if bit == self.response[i] else RED + str(bit) for i, bit in enumerate(res)])}{RESET}")
+        self.code.decode([int(i) ^ int(j) for i, j in zip(res, self.response)])
 
 
     def __repr__(self):

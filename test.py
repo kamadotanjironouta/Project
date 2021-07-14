@@ -21,16 +21,13 @@ def test_powerpuf():
     pufs = []
     p = PowerPuf(n, err)
     print(p)
-    p.generate( tmp := PUF(n,err) )
-    pufs.append(tmp)
-    p.verify(res := tmp())
-    print("".join([f"{i[0]}" if i[0] == i[1] else f"{i[0]}({i[1]})" for i in zip(res, tmp.response)]))
-
+    p.generate()
+    p.verify(p())
 
 
 if __name__ == "__main__":
     # test_puf()
     print(DIV)
-    test_bch()
+    # test_bch()
     # print(DIV)
-    # test_powerpuf()
+    test_powerpuf()

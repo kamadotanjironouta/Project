@@ -51,29 +51,34 @@ class BCH:
         return [self.pr(self.pr(codeword))(self.gf.gen()**i) for i in range(1, self.d)]
 
     def decode(self, codeword: list):
-        codeword[5] = int(codeword[5]) ^ 1
-        codeword[13] = int(codeword[13]) ^ 1
         syndromes = self.calculate_syndromes(codeword)
         syndrome_matrix = Matrix([line for line in [syndromes[i:self.t + i] for i in range(self.t)]])
-        print(syndrome_matrix)
         m = None
         for i in range(self.t):
             try:
-                syndrome_matrix[range(0, self.t - i), range(0,self.t - i)].inverse() * vector(syndromes[self.t-i: self.d - 2 - i])
+                if (self.t - i == 1):
+                    m = syndrome_matrix[range(0, self.t - i), range(0,self.t - i)].inverse() * vector([syndromes[self.d - 2 - i]])
+                    break
+                else:
+                    print(syndromes[self.t - 1 - i: self.d - 2 - i])
+                    m = syndrome_matrix[range(0, self.t - i), range(0,self.t - i)].inverse() * vector(syndromes[self.t - 1 - i: self.d - 2 - i])
+                    break
             except Exception as _e:
                 print("Trying with a matrix of lower degree {}x{}".format(self.t-i-1, self.t-i-1))
-            else:
-                m = syndrome_matrix[range(0, self.t - i), range(0,self.t - i)].inverse() * vector(syndromes[self.t-i: self.d - 2 - i])
-                break
         if not m:
             print("Couldn't correct")
             return None
         m = (list(m) + [1])[::-1]
         m = Matrix(m)
-        print(m)
-        print((m * vector([self.gf.gen()**i for i in range(m.dimensions()[1])]))[0])
-        errors = []
-        print(errors)
+        u = PolynomialRing(GF(2), 'y'); u.inject_variables(verbose = False)
+        v = vector([y**i for i in range(m.dimensions()[1])])
+        factors = factor((m * v)[0])
+        roots = tuple((i for i, _ in factors.value().roots()))
+        error_location = [2**self.m - root.log(self.gf.gen()) for root in roots]
+        if len(error_location):
+            print("True")
+        else:
+            print("False")
         return 0
         
 

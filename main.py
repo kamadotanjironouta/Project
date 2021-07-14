@@ -92,4 +92,9 @@ if __name__ == "__main__":
                     print_success('Successfully Generated a PowerPuf Response') 
                     print(f'{"".join([colorama.Fore.YELLOW + str(r_bit) if o_bit == r_bit else colorama.Fore.RED + str(r_bit) for o_bit, r_bit in zip(res, pp.response)])}')
                     print("Do You Want to Correct it? (1/0)")
+                    try:
+                        if int(input("")):
+                            pp.verify(res)
+                    except ValueError as e:
+                        print("Bad Value")
             continue
